@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TrangChu.aspx.cs" Inherits="ToySmart.TrangChu" MaintainScrollPositionOnPostBack="true" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TrangChu.aspx.cs" Inherits="ToySmart.TrangChu" MaintainScrollPositionOnPostBack="true" %>
 <%@ Register Src="~/ProductCard.ascx" TagPrefix="uc" TagName="ProductCard" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="CSS/TrangChu.css" rel="stylesheet" />
@@ -230,8 +230,6 @@
 
 
 
-<asp:UpdatePanel ID="upKhuyenMai" runat="server" UpdateMode="Always">
-    <ContentTemplate>
         <div class="product-grid">
 
             <!-- Sau này lấy sản phẩm từ Database -->
@@ -246,8 +244,6 @@
             </asp:Repeater>
 
         </div>
-    </ContentTemplate>
-</asp:UpdatePanel>
 
 
 
@@ -282,8 +278,6 @@
 
         </div>
 
-<asp:UpdatePanel ID="upBanChay" runat="server" UpdateMode="Always">
-    <ContentTemplate>
         <div class="product-grid">
 
             <!-- Sau này tính từ ChiTietDonHang -->
@@ -296,8 +290,6 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-    </ContentTemplate>
-</asp:UpdatePanel>
 
 
     </section>

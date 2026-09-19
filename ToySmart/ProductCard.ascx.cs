@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using MySql.Data.MySqlClient;
 using System.Web.UI;
 
@@ -25,13 +25,29 @@ namespace ToySmart
             }
         }
 
-        public string TenSanPham { get; set; }
+        public string TenSanPham
+        {
+            get => ViewState["TenSanPham"] as string ?? string.Empty;
+            set => ViewState["TenSanPham"] = value;
+        }
 
-        public string ThuongHieu { get; set; }
+        public string ThuongHieu
+        {
+            get => ViewState["ThuongHieu"] as string ?? string.Empty;
+            set => ViewState["ThuongHieu"] = value;
+        }
 
-        public decimal Gia { get; set; }
+        public decimal Gia
+        {
+            get => ViewState["Gia"] != null ? (decimal)ViewState["Gia"] : 0;
+            set => ViewState["Gia"] = value;
+        }
 
-        public string HinhAnh { get; set; }
+        public string HinhAnh
+        {
+            get => ViewState["HinhAnh"] as string ?? string.Empty;
+            set => ViewState["HinhAnh"] = value;
+        }
 
 
         protected void Page_Load(object sender, EventArgs e)
