@@ -1,0 +1,412 @@
+﻿/* ==========================================
+   GIỎ HÀNG - ToySmart
+   Đổi 2 biến màu bên dưới cho khớp với
+   màu chủ đạo trong TrangChu.css của bạn.
+   ========================================== */
+
+:root {
+    --mau-chinh: #14B8A6;
+    --mau-chinh-dam: #0F766E;
+    --mau-chu: #2b2b2b;
+    --mau-chu-nhat: #8a8a8a;
+    --mau-vien: #ececec;
+    --mau-nen-nhat: #fafafa;
+}
+
+
+/* ==========================================
+   BẢNG GIỎ HÀNG
+   ========================================== */
+
+.bang-gio-hang {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid var(--mau-vien);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+    .bang-gio-hang th {
+        text-align: left;
+        padding: 16px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--mau-chu-nhat);
+        background: var(--mau-nen-nhat);
+        border-bottom: 1px solid var(--mau-vien);
+    }
+
+    .bang-gio-hang td {
+        padding: 18px;
+        border-bottom: 1px solid var(--mau-vien);
+        color: var(--mau-chu);
+        vertical-align: middle;
+    }
+
+    .bang-gio-hang tr:last-child td {
+        border-bottom: none;
+    }
+
+
+/* ==========================================
+   CỘT SẢN PHẨM (ảnh + tên)
+   ========================================== */
+
+.cot-san-pham {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+    .cot-san-pham img {
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+        background: var(--mau-nen-nhat);
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+
+    .cot-san-pham a {
+        color: var(--mau-chu);
+        text-decoration: none;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+        .cot-san-pham a:hover {
+            color: var(--mau-chinh);
+        }
+
+
+/* ==========================================
+   CỘT SỐ LƯỢNG (nút - và +)
+   ========================================== */
+
+.cot-so-luong {
+    white-space: nowrap;
+}
+
+    .cot-so-luong span {
+        display: inline-block;
+        min-width: 40px;
+        text-align: center;
+        font-weight: 600;
+    }
+
+.btn-so-luong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--mau-vien);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--mau-chu);
+    font-size: 17px;
+    line-height: 1;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+}
+
+    .btn-so-luong:hover {
+        background: var(--mau-chinh);
+        border-color: var(--mau-chinh);
+        color: #fff;
+    }
+
+    .btn-so-luong:focus-visible {
+        outline: 2px solid var(--mau-chinh);
+        outline-offset: 2px;
+    }
+
+
+/* ==========================================
+   THÀNH TIỀN + NÚT XÓA
+   ========================================== */
+
+.cot-thanh-tien {
+    font-weight: 700;
+    color: var(--mau-chinh);
+    white-space: nowrap;
+}
+
+.btn-xoa {
+    color: var(--mau-chu-nhat);
+    font-size: 16px;
+    text-decoration: none;
+    transition: color .15s;
+}
+
+    .btn-xoa:hover {
+        color: #d93025;
+    }
+
+
+/* ==========================================
+   GIỎ HÀNG TRỐNG
+   ========================================== */
+
+.gio-hang-trong {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border: 1px dashed var(--mau-vien);
+    border-radius: 14px;
+}
+
+    .gio-hang-trong p {
+        margin: 0 0 18px;
+        color: var(--mau-chu-nhat);
+        font-size: 16px;
+    }
+
+
+/* ==========================================
+   TỔNG TIỀN + THANH TOÁN
+   ========================================== */
+
+.khu-tong-tien {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+    margin-top: 22px;
+    padding: 20px 24px;
+    background: #fff;
+    border: 1px solid var(--mau-vien);
+    border-radius: 14px;
+}
+
+    .khu-tong-tien span {
+        color: var(--mau-chu-nhat);
+    }
+
+    .khu-tong-tien strong {
+        font-size: 24px;
+        color: var(--mau-chinh);
+        margin-right: 10px;
+    }
+
+.btn-thanh-toan {
+    padding: 13px 30px;
+    border: none;
+    border-radius: 999px;
+    background: var(--mau-chinh);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s;
+}
+
+    .btn-thanh-toan:hover {
+        background: var(--mau-chinh-dam);
+    }
+
+
+/* ==========================================
+   BADGE SỐ LƯỢNG TRÊN ICON GIỎ HÀNG
+   (dùng ở Site.Master)
+   ========================================== */
+
+.cart-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    margin-left: -8px;
+    border-radius: 999px;
+    background: var(--mau-chinh);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    vertical-align: top;
+}
+
+
+/* ==========================================
+   THÔNG BÁO NHỎ GÓC MÀN HÌNH
+   (dùng chung cho ProductCard)
+   ========================================== */
+
+.thong-bao-thanh-cong {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 20px;
+    border-radius: 10px;
+    background: #2b2b2b;
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, .18);
+    animation: thongBaoHienRa .22s ease-out;
+}
+
+    .thong-bao-thanh-cong i {
+        color: #4ade80;
+    }
+
+@keyframes thongBaoHienRa {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .thong-bao-thanh-cong {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   MODAL XÁC NHẬN XÓA
+   Thay cho confirm() mặc định của trình duyệt
+   để đồng bộ màu sắc với các thông báo khác.
+   ========================================== */
+
+.modal-nen {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 22, .45);
+}
+
+    .modal-nen.hien {
+        display: flex;
+    }
+
+.modal-hop {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 16px;
+    padding: 28px 24px 22px;
+    background: #fff;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+    animation: modalHienRa .18s ease-out;
+}
+
+    .modal-hop i {
+        display: block;
+        margin-bottom: 12px;
+        font-size: 32px;
+        color: #EF4444;
+    }
+
+    .modal-hop p {
+        margin: 0 0 22px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--mau-chu);
+    }
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 11px 0;
+    border: none;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .15s, color .15s, border-color .15s;
+}
+
+.modal-btn-huy {
+    background: #fff;
+    border: 1px solid var(--mau-vien);
+    color: var(--mau-chu-nhat);
+}
+
+    .modal-btn-huy:hover {
+        background: var(--mau-nen-nhat);
+    }
+
+.modal-btn-xoa {
+    background: #EF4444;
+    color: #fff;
+}
+
+    .modal-btn-xoa:hover {
+        background: #d93025;
+    }
+
+@keyframes modalHienRa {
+    from {
+        opacity: 0;
+        transform: scale(.95) translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-hop {
+        animation: none;
+    }
+}
+
+
+/* ==========================================
+   MÀN HÌNH NHỎ
+   Ẩn cột đơn giá, thu nhỏ ảnh.
+   ========================================== */
+
+@media (max-width: 720px) {
+
+    .bang-gio-hang th:nth-child(2),
+    .bang-gio-hang td:nth-child(2) {
+        display: none;
+    }
+
+    .bang-gio-hang th,
+    .bang-gio-hang td {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    .cot-san-pham {
+        gap: 10px;
+    }
+
+        .cot-san-pham img {
+            width: 52px;
+            height: 52px;
+        }
+
+    .khu-tong-tien {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .btn-thanh-toan {
+        width: 100%;
+    }
+}

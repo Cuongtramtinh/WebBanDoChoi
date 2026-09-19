@@ -1,0 +1,537 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ToySmart.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ToySmart</title>
+
+    <link href="CSS/Style.css" rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+
+<body>
+
+    <form id="form1" runat="server">
+
+        <asp:ScriptManager
+            ID="ScriptManager1"
+            runat="server"
+            EnablePartialRendering="false" />
+
+
+        <!-- ==============================
+             HEADER
+             ============================== -->
+
+        <header>
+
+            <div class="header-container">
+
+                <!-- LOGO -->
+
+                <a href="TrangChu.aspx" class="logo-link">
+
+                    <img src="Images/logo.png"
+                         alt="ToySmart"
+                         class="logo" />
+
+                </a>
+
+
+                <!-- TÌM KIẾM -->
+
+                <div class="search-box">
+
+                    <asp:TextBox
+                        ID="txtSearch"
+                        runat="server"
+                        placeholder="Tìm kiếm sản phẩm..."
+                        CssClass="search-input">
+                    </asp:TextBox>
+
+                    <asp:Button
+                        ID="btnSearch"
+                        runat="server"
+                        Text="&#xf002;"
+                        CssClass="search-button"
+                        ToolTip="Tìm kiếm"
+                        OnClick="btnSearch_Click" />
+
+                </div>
+
+
+                <!-- TÀI KHOẢN -->
+
+                <div class="account-dropdown">
+
+                    <!-- CHƯA ĐĂNG NHẬP -->
+
+                    <asp:Panel
+                        ID="pnlChuaDangNhap"
+                        runat="server">
+
+                        <div class="account-link">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <span>Đăng nhập</span>
+
+                        </div>
+
+
+                        <div class="account-menu">
+
+                            <a href="DangNhap.aspx">
+                                <i class="fa-solid fa-right-to-bracket"></i>
+                                Đăng nhập
+                            </a>
+
+                            <a href="DangKy.aspx">
+                                <i class="fa-solid fa-user-plus"></i>
+                                Đăng ký
+                            </a>
+
+                        </div>
+
+                    </asp:Panel>
+
+
+                    <!-- ĐÃ ĐĂNG NHẬP -->
+
+                    <asp:Panel
+                        ID="pnlDaDangNhap"
+                        runat="server">
+
+                        <div class="account-link">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <asp:Label
+                                ID="lblHoVaTen"
+                                runat="server">
+                            </asp:Label>
+
+                        </div>
+
+
+                        <div class="account-menu">
+
+                            <a href="TaiKhoan.aspx">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                Tài khoản
+
+                            </a>
+
+
+                            <asp:LinkButton
+                                ID="btnDangXuat"
+                                runat="server"
+                                OnClick="btnDangXuat_Click">
+
+                                <i class="fa-solid fa-right-from-bracket"></i>
+
+                                Đăng xuất
+
+                            </asp:LinkButton>
+
+                        </div>
+
+                    </asp:Panel>
+
+                </div>
+
+
+                <!-- GIỎ HÀNG -->
+
+                <div class="cart-dropdown">
+
+                    <a href="GioHang.aspx"
+                       class="cart-link">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        <span>Giỏ hàng</span>
+
+                        <asp:Label
+                            ID="lblSoLuongGioHang"
+                            runat="server"
+                            CssClass="cart-count"
+                            Text="0">
+                        </asp:Label>
+
+                    </a>
+
+
+                    <div class="cart-menu">
+
+                        <!-- CHƯA ĐĂNG NHẬP -->
+                        <asp:Panel
+                            ID="pnlGioHangChuaDangNhap"
+                            runat="server">
+
+                            <div class="cart-not-login">
+
+                                <i class="fa-solid fa-cart-shopping"></i>
+
+                                <p>
+                                    Bạn chưa đăng nhập
+                                </p>
+
+                                <span>
+                                    Đăng nhập để xem giỏ hàng của bạn
+                                </span>
+
+                                <a href="DangNhap.aspx"
+                                   class="cart-login-btn">
+
+                                    Đăng nhập
+
+                                </a>
+
+                            </div>
+
+                        </asp:Panel>
+
+
+                        <!-- ĐÃ ĐĂNG NHẬP -->
+                        <asp:Panel
+                            ID="pnlGioHangDaDangNhap"
+                            runat="server">
+
+                            <asp:Panel
+                                ID="pnlGioHangTrongMini"
+                                runat="server"
+                                CssClass="cart-empty-mini">
+
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                <p>Giỏ hàng đang trống</p>
+
+                            </asp:Panel>
+
+                            <asp:Repeater
+                                ID="rptGioHangMini"
+                                runat="server">
+
+                                <ItemTemplate>
+
+                                    <div class="cart-mini-item">
+
+                                        <img src='<%# Eval("HinhAnh") %>' alt="" />
+
+                                        <div class="cart-mini-info">
+                                            <span class="cart-mini-ten"><%# Eval("TenSanPham") %></span>
+                                            <span class="cart-mini-gia">
+                                                <%# Eval("SoLuong") %> ×
+                                                <%# Eval("Gia", "{0:N0}") %> đ
+                                            </span>
+                                        </div>
+
+                                    </div>
+
+                                </ItemTemplate>
+
+                            </asp:Repeater>
+
+                            <a href="GioHang.aspx" class="cart-view-btn">
+                                Xem giỏ hàng
+                            </a>
+
+                        </asp:Panel>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ==============================
+             NAVBAR
+             ============================== -->
+
+        <nav>
+
+            <div>
+
+                <!-- TRANG CHỦ -->
+
+                <a href="TrangChu.aspx">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Trang chủ
+
+                </a>
+
+
+                <!-- DANH MỤC -->
+
+                <div class="nav-dropdown">
+
+                    <a href="SanPham.aspx">
+
+                        <i class="fa-solid fa-list"></i>
+
+                        Danh mục
+
+                    </a>
+
+
+                    <div class="category-menu">
+
+                        <a href="SanPham.aspx">
+                            Tất cả sản phẩm
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- KHUYẾN MÃI -->
+
+                <a href="KhuyenMai.aspx">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    Khuyến mãi
+
+                </a>
+
+
+                <!-- BÁN CHẠY -->
+
+                <a href="BanChay.aspx">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    Bán chạy
+
+                </a>
+
+
+                <!-- GỢI Ý -->
+
+                <a href="GoiY.aspx">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    Gợi ý cho bé
+
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- ==============================
+             NỘI DUNG TRANG
+             ============================== -->
+
+        <main>
+
+            <asp:ContentPlaceHolder
+                ID="ContentPlaceHolder1"
+                runat="server">
+            </asp:ContentPlaceHolder>
+
+        </main>
+
+
+        <!-- ==============================
+             FOOTER
+             ============================== -->
+
+        <footer class="site-footer">
+
+            <div class="footer-container">
+
+
+                <!-- GIỚI THIỆU -->
+
+                <div class="footer-about">
+
+                    <h3>
+                        CUONG TRAM TINH
+                    </h3>
+
+
+                    <p class="footer-slogan">
+
+                        “Mỗi món đồ chơi là một cơ hội để bé khám phá,
+                        học hỏi và lớn lên từng ngày.”
+
+                    </p>
+
+
+                    <p>
+
+                        Chúng tôi tin rằng đồ chơi không chỉ mang đến niềm vui
+                        mà còn là người bạn đồng hành trong những năm tháng đầu đời
+                        của trẻ. CUONG TRAM TINH lựa chọn những sản phẩm phù hợp
+                        với từng độ tuổi, sở thích và nhu cầu phát triển của bé,
+                        để mỗi giờ chơi đều trở thành một hành trình khám phá
+                        đầy thú vị.
+
+                    </p>
+
+                </div>
+
+
+                <!-- CHĂM SÓC KHÁCH HÀNG -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        CHĂM SÓC KHÁCH HÀNG
+                    </h4>
+
+
+                    <a href="#">
+                        Trung tâm hỗ trợ
+                    </a>
+
+                    <a href="#">
+                        Hướng dẫn mua hàng
+                    </a>
+
+                    <a href="#">
+                        Hướng dẫn thanh toán
+                    </a>
+
+                    <a href="#">
+                        Chính sách đổi trả
+                    </a>
+
+                    <a href="#">
+                        Chính sách vận chuyển
+                    </a>
+
+                </div>
+
+
+                <!-- CHÍNH SÁCH -->
+
+                <div class="footer-column">
+
+                    <h4>
+                        CHÍNH SÁCH
+                    </h4>
+
+
+                    <a href="#">
+                        Điều khoản sử dụng
+                    </a>
+
+                    <a href="#">
+                        Chính sách bảo mật
+                    </a>
+
+                    <a href="#">
+                        Chính sách bán hàng
+                    </a>
+
+                    <a href="#">
+                        Chính sách bảo hành
+                    </a>
+
+                    <a href="#">
+                        Câu hỏi thường gặp
+                    </a>
+
+                </div>
+
+
+                <!-- LIÊN HỆ -->
+
+                <div class="footer-column footer-contact">
+
+                    <h4>
+                        LIÊN HỆ VỚI CHÚNG TÔI
+                    </h4>
+
+
+                    <a href="https://zalo.me/0339684298"
+                       target="_blank">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                        0339684298
+
+                    </a>
+
+
+                    <a href="https://www.facebook.com/profile.php?id=61593034667942"
+                       target="_blank">
+
+                        <i class="fa-brands fa-facebook"></i>
+
+                        Facebook
+
+                    </a>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        Hỗ trợ: 24/24h
+
+                    </p>
+
+
+                    <p>
+
+                        <i class="fa-solid fa-heart"></i>
+
+                        Luôn sẵn sàng đồng hành cùng bạn
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOOTER BOTTOM -->
+
+            <div class="footer-bottom">
+
+                <p>
+
+                    © 2026
+
+                    <strong>
+                        CUONG TRAM TINH
+                    </strong>
+
+                    — Cùng bé khám phá thế giới qua từng món đồ chơi.
+
+                </p>
+
+            </div>
+
+        </footer>
+
+
+    </form>
+
+</body>
+</html>

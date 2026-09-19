@@ -1,0 +1,650 @@
+﻿﻿ /* ==============================
+   CUONGTRAMTINH - GLOBAL
+   ============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ==============================
+   HEADER
+   ============================== */
+
+header {
+    background: linear-gradient(135deg, #0D9488, #14B8A6, #22C55E);
+    border-bottom: none;
+}
+
+    header > div {
+        max-width: 1200px;
+        min-height: 80px;
+        margin: 0 auto;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+    }
+
+
+/* ==============================
+   LOGO
+   ============================== */
+
+.logo {
+    width: 150px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* ==============================
+   SEARCH
+   ============================== */
+
+header > div > .search-box {
+    display: flex;
+    flex: 1;
+    max-width: 550px;
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+    .search-input:focus {
+        border-color: #14B8A6;
+    }
+
+.search-button {
+    width: 45px;
+    height: 40px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #14B8A6;
+    color: white;
+    cursor: pointer;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 16px;
+}
+
+    .search-button:hover {
+        background-color: #0F766E;
+    }
+
+
+/* ==============================
+   ACCOUNT DROPDOWN
+   ============================== */
+
+.account-dropdown {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.account-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 160px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    display: none;
+    z-index: 1000;
+}
+
+    .account-menu a {
+        display: block;
+        padding: 12px 15px;
+        color: #333;
+    }
+
+        .account-menu a:hover {
+            background-color: #CCFBF1;
+            color: #0F766E;
+        }
+
+.account-dropdown:hover .account-menu {
+    display: block;
+}
+
+
+/* ==============================
+   CART DROPDOWN
+   ============================== */
+
+.cart-dropdown {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.cart-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: white;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    background-color: #EF4444;
+    color: white;
+    border-radius: 10px;
+    font-size: 11px;
+    line-height: 18px;
+    text-align: center;
+}
+
+
+/* ==============================
+   CART MENU
+   ============================== */
+
+.cart-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    max-height: 420px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000;
+}
+
+.cart-dropdown:hover .cart-menu {
+    display: block;
+}
+
+
+/* ==============================
+   CART - NOT LOGIN
+   ============================== */
+
+.cart-not-login {
+    text-align: center;
+    color: #333;
+}
+
+    .cart-not-login > i {
+        display: block;
+        margin-bottom: 10px;
+        color: #14B8A6;
+        font-size: 35px;
+    }
+
+    .cart-not-login p {
+        margin: 5px 0;
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+    .cart-not-login span {
+        display: block;
+        margin-bottom: 15px;
+        color: #777;
+        font-size: 13px;
+    }
+
+
+/* ==============================
+   CART LOGIN BUTTON
+   ============================== */
+
+.cart-login-btn {
+    display: inline-block;
+    padding: 9px 25px;
+    background-color: #14B8A6;
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+    .cart-login-btn:hover {
+        background-color: #0F766E;
+    }
+
+
+/* ==============================
+   CART MINI - ĐÃ ĐĂNG NHẬP
+   ============================== */
+
+.cart-empty-mini {
+    text-align: center;
+    padding: 20px 0 10px;
+    color: #777;
+}
+
+    .cart-empty-mini i {
+        display: block;
+        margin-bottom: 10px;
+        color: #14B8A6;
+        font-size: 30px;
+    }
+
+    .cart-empty-mini p {
+        margin: 0;
+        font-size: 14px;
+    }
+
+.cart-mini-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #E6FFFB;
+}
+
+    .cart-mini-item:last-of-type {
+        border-bottom: none;
+    }
+
+    .cart-mini-item img {
+        display: block;
+        width: 46px;
+        min-width: 46px;
+        max-width: 46px;
+        height: 46px;
+        max-height: 46px;
+        object-fit: contain;
+        background-color: #F5F5F5;
+        border-radius: 6px;
+        flex-shrink: 0;
+    }
+
+.cart-mini-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.cart-mini-ten {
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cart-mini-gia {
+    color: #777;
+    font-size: 12px;
+}
+
+.cart-view-btn {
+    display: block;
+    margin-top: 14px;
+    padding: 10px;
+    background-color: #14B8A6;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+    .cart-view-btn:hover {
+        background-color: #0F766E;
+    }
+
+
+/* ==============================
+   NAVBAR
+   ============================== */
+
+nav {
+    background-color: #CCFBF1;
+    border-bottom: 1px solid #99F6E4;
+}
+
+    nav > div {
+        max-width: 1200px;
+        height: 52px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+
+
+        /* ==============================
+   NAVBAR ITEMS
+   ============================== */
+
+        nav > div > a,
+        .nav-dropdown {
+            flex: 1;
+        }
+
+            nav > div > a,
+            .nav-dropdown > a {
+                height: 52px;
+                padding: 0 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                color: #0F766E;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            }
+
+                nav > div > a:hover,
+                .nav-dropdown > a:hover {
+                    background-color: #99F6E4;
+                    color: #115E59;
+                }
+
+    nav i {
+        font-size: 14px;
+    }
+
+
+/* ==============================
+   DANH MỤC DROPDOWN
+   ============================== */
+
+.nav-dropdown {
+    position: relative;
+}
+
+.category-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    display: none;
+    z-index: 1000;
+}
+
+    .category-menu a {
+        display: block;
+        padding: 12px 16px;
+        color: #333333;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+        .category-menu a:hover {
+            background-color: #CCFBF1;
+            color: #0F766E;
+        }
+
+.nav-dropdown:hover .category-menu {
+    display: block;
+}
+
+
+/* ==============================
+   MAIN CONTENT
+   ============================== */
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+
+/* ==============================
+   FOOTER
+   ============================== */
+
+.site-footer {
+    margin-top: 50px;
+    background-color: #0F766E;
+    color: #E6FFFB;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 45px 20px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 45px;
+}
+
+
+/* ==============================
+   FOOTER - GIỚI THIỆU
+   ============================== */
+
+.footer-about h3 {
+    margin: 0 0 15px;
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.footer-about p {
+    margin: 0 0 12px;
+    color: #CCFBF1;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer-about .footer-slogan {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   FOOTER - CỘT
+   ============================== */
+
+.footer-column h4 {
+    margin: 0 0 18px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 12px;
+    color: #CCFBF1;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+    .footer-column a:hover {
+        color: #FFFFFF;
+        padding-left: 4px;
+    }
+
+
+/* ==============================
+   FOOTER - LIÊN HỆ
+   ============================== */
+
+.footer-contact a,
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-contact i {
+    width: 18px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.footer-contact p {
+    margin: 0 0 12px;
+    color: #CCFBF1;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   FOOTER - BOTTOM
+   ============================== */
+
+.footer-bottom {
+    padding: 18px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+}
+
+    .footer-bottom p {
+        margin: 0;
+        color: #CCFBF1;
+        font-size: 12px;
+    }
+
+    .footer-bottom strong {
+        color: #FFFFFF;
+    }
+
+
+/* ==============================
+   TRANG TÌM KIẾM
+   ============================== */
+
+.tim-kiem-page {
+    width: 100%;
+}
+
+.tim-kiem-title {
+    margin: 0 0 10px;
+    color: #0F766E;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.tim-kiem-tu-khoa {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 15px;
+}
+
+.tim-kiem-thong-bao {
+    display: block;
+    margin-bottom: 25px;
+    color: #666;
+    font-size: 14px;
+}
+
+
+/* ==============================
+   PRODUCT GRID
+   ============================== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+
+@media (max-width: 900px) {
+
+    header > div {
+        gap: 15px;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    header > div > .search-box {
+        max-width: none;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    header > div {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        width: 120px;
+    }
+
+    header > div > .search-box {
+        order: 3;
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
+    nav > div {
+        overflow-x: auto;
+    }
+
+        nav > div > a,
+        .nav-dropdown {
+            min-width: 130px;
+        }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
